@@ -1,5 +1,3 @@
----
-
 # Virtual Memory Simulation
 
 ## Overview
@@ -14,6 +12,25 @@ This project simulates a virtual memory system supporting:
 - Detailed runtime statistics
 
 It models how an operating system handles virtual memory access under constraints of limited physical memory.
+
+---
+
+## Assignment Parts Overview
+
+### Part 1: Basic Address Translation and Paging
+
+- Physical memory is equal in size to the virtual address space (256 frames).
+- The program translates logical addresses using a TLB and page table.
+- On TLB miss and page table miss, pages are loaded from `BACKING_STORE.bin`.
+- If the write bit is set, memory is modified in-place (incremented by 1).
+- No page eviction is needed because enough memory is available.
+
+### Part 2: LRU Replacement and Dirty Page Management
+
+- Physical memory is reduced to 128 frames, requiring a frame eviction strategy.
+- When no free frame is available, the least recently used (LRU) page is evicted.
+- If the evicted page is dirty (i.e., it was written to), it is written back to disk.
+- Page replacement occurs during demand paging and integrates with TLB and page table updates.
 
 ---
 
